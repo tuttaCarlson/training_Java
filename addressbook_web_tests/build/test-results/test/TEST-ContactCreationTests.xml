@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ContactCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-03-09T16:07:20" hostname="DESKTOP-7U24L5G" time="1.354">
+  <properties/>
+  <testcase name="testContactCreation" classname="ContactCreationTests" time="1.354"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch-heads/3987@{#882}) on port 32296
+Only local connections are allowed.
+Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+[1583770036.932][WARNING]: Timed out connecting to Chrome, retrying...
+мар 09, 2020 7:07:18 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+]]></system-err>
+</testsuite>
