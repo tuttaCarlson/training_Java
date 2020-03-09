@@ -1,3 +1,5 @@
+package model;
+
 public class ContactData {
     private String firstName;
     private String lastName;
