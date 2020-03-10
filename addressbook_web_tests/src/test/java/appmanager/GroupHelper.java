@@ -20,6 +20,12 @@ public class GroupHelper extends HelperBase {
         click(By.name("new"));
     }
 
+    public void selectGroup(){ click(By.name("selected[]")); }
+
+    public void submitGroupDeletion(){
+        click(By.name("delete"));
+    }
+
     public void fillGroupForm(GroupData groupData) {
         type(By.name("group_name"), groupData.getName());
         type(By.name("group_header"), groupData.getHeader());
