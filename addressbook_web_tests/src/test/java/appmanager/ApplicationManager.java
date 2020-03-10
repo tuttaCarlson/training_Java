@@ -1,18 +1,19 @@
 package appmanager;
 
 import model.ContactData;
-import model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ApplicationManager {
-    WebDriver driver;
+    ChromeDriver driver;
+    private GroupHelper groupHelper;
 
     public void init() {
         driver = new ChromeDriver();
         WebDriverWait wait = new WebDriverWait(driver, 10);
+        groupHelper = new GroupHelper(driver);
         driver.get("http://localhost/addressbook/");
         login("admin", "secret");
     }
@@ -50,28 +51,11 @@ public class ApplicationManager {
         driver.quit();
     }
 
-    public void returnToGroupPage() {
-        driver.findElement(By.linkText("group page")).click();
-    }
-
-    public void submitGroupCreation() {
-        driver.findElement(By.name("submit")).click();
-    }
-
-    public void fillGroupForm(GroupData groupData) {
-        driver.findElement(By.name("group_name")).click();
-        driver.findElement(By.name("group_name")).sendKeys(groupData.getName());
-        driver.findElement(By.name("group_header")).click();
-        driver.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-        driver.findElement(By.name("group_footer")).click();
-        driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-    }
-
-    public void initGroupCreation() {
-        driver.findElement(By.name("new")).click();
-    }
-
     public void openGroupPage() {
         driver.findElement(By.linkText("groups")).click();
+    }
+
+    public GroupHelper getGroupHelper() {
+        return groupHelper;
     }
 }
