@@ -23,6 +23,14 @@ public class ContactHelper extends HelperBase {
         submitAlert();
     }
 
+    public void submitContactModification(){
+        click(By.name("update"));
+    }
+
+    public void initContactModification(){
+        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    }
+
     public void fillContactForm(ContactData contactData) {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("lastname"), contactData.getLastName());
