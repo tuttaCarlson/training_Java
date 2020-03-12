@@ -1,12 +1,12 @@
 package appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 
 public class NavigationHelper {
-    private ChromeDriver driver;
+    private WebDriver driver;
 
-    public NavigationHelper(ChromeDriver driver) {
+    public NavigationHelper(WebDriver driver) {
         this.driver = driver;
     }
 

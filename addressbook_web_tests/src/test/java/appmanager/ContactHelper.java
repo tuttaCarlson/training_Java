@@ -2,11 +2,12 @@ package appmanager;
 
 import model.ContactData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ContactHelper extends HelperBase {
 
-    public ContactHelper(ChromeDriver driver){
+    public ContactHelper(WebDriver driver){
         super(driver);
     }
 

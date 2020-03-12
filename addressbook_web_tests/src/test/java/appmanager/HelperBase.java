@@ -1,12 +1,12 @@
 package appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 
 public class HelperBase {
-    private ChromeDriver driver;
+    private WebDriver driver;
 
-    public HelperBase(ChromeDriver driver){
+    public HelperBase(WebDriver driver){
         this.driver = driver;
     }
 

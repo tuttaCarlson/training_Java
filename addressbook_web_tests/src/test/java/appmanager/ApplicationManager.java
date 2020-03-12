@@ -1,17 +1,31 @@
 package appmanager;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 public class ApplicationManager {
-    ChromeDriver driver;
+    WebDriver driver;
+    private String browser;
     private GroupHelper groupHelper;
     private NavigationHelper navigationHelper;
     private SessionHelper sessionHelper;
     private ContactHelper contactHelper;
 
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+    }
+
     public void init() {
-        driver = new ChromeDriver();
+        if (browser.equals(BrowserType.FIREFOX)) {
+            driver = new FirefoxDriver();
+        }
+        else if (browser.equals(BrowserType.CHROME)){
+            driver = new ChromeDriver();
+        }
         WebDriverWait wait = new WebDriverWait(driver, 10);
         groupHelper = new GroupHelper(driver);
         navigationHelper = new NavigationHelper(driver);
