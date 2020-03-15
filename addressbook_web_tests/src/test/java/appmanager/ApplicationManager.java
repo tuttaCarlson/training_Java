@@ -26,7 +26,6 @@ public class ApplicationManager {
         else if (browser.equals(BrowserType.CHROME)){
             driver = new ChromeDriver();
         }
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         groupHelper = new GroupHelper(driver);
         navigationHelper = new NavigationHelper(driver);
         sessionHelper = new SessionHelper(driver);
