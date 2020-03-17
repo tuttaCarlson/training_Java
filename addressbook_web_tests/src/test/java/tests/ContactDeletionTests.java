@@ -2,6 +2,7 @@ package tests;
 
 import model.ContactData;
 import model.GroupData;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -21,8 +22,14 @@ public class ContactDeletionTests extends TestBase{
                     , "123543", "test"));
             app.getNavigationHelper().openHomePage();
         }
-        app.getContactHelper().selectContact();
+        List<ContactData> before = app.getContactHelper().getContactList();
+        app.getContactHelper().selectContact(before.size()-1);
         app.getContactHelper().submitContactDeletion();
-
+        //TODO add wait here (remove implicit wait from ApplicationManager)
+        app.getNavigationHelper().openHomePage();
+        List<ContactData> after = app.getContactHelper().getContactList();
+        Assert.assertEquals(after.size(), before.size()-1);
+        before.remove(before.size()-1);
+        Assert.assertEquals(before, after);
     }
 }
