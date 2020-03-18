@@ -1,7 +1,6 @@
 package appmanager;
 
 import model.ContactData;
-import model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,8 +33,9 @@ public class ContactHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public void initContactModification(){
-        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    public void initContactModification(int id){
+        String url = "http://localhost/addressbook/edit.php?id=" + id;
+        driver.get(url);
     }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
@@ -81,5 +81,9 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
-
+    public void selectContactToModify(int index) {
+        String url = "edit.php?id=" + index;
+        driver.findElement(By.xpath("//a[@href='"+url+"']")).click();
+    }
 }
+
