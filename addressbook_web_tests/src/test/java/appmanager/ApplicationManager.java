@@ -24,11 +24,10 @@ public class ApplicationManager {
     public void init() {
         if (browser.equals(BrowserType.FIREFOX)) {
             driver = new FirefoxDriver();
-        }
-        else if (browser.equals(BrowserType.CHROME)){
+        } else if (browser.equals(BrowserType.CHROME)) {
             driver = new ChromeDriver();
         }
-        driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         groupHelper = new GroupHelper(driver);
         navigationHelper = new NavigationHelper(driver);
         sessionHelper = new SessionHelper(driver);
@@ -38,7 +37,7 @@ public class ApplicationManager {
     }
 
 
-    public ContactHelper getContactHelper() {
+    public ContactHelper contact() {
         return contactHelper;
     }
 
@@ -46,12 +45,9 @@ public class ApplicationManager {
         driver.quit();
     }
 
-
-    public GroupHelper getGroupHelper() {
+    public GroupHelper group() {
         return groupHelper;
     }
 
-    public NavigationHelper getNavigationHelper() {
-        return navigationHelper;
-    }
+    public NavigationHelper goTo() { return navigationHelper; }
 }

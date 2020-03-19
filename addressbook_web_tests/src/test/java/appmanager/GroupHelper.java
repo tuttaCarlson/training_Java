@@ -14,65 +14,72 @@ public class GroupHelper extends HelperBase {
         super(driver);
     }
 
-    public void returnToGroupPage() {
-        click(By.linkText("group page"));
+    public void create(GroupData group) {
+        initCreation();
+        fillForm(group);
+        submitCreation();
+        returnToGroupPage();
     }
 
-    public void submitGroupCreation() {
-        click(By.name("submit"));
+    public void delete(int index) {
+        select(index);
+        submitDeletion();
+        returnToGroupPage();
     }
 
-    public void initGroupCreation() {
-        click(By.name("new"));
-    }
-
-    public void selectGroup(int index) {
-        driver.findElements(By.name("selected[]")).get(index).click();
-    }
-
-    public void submitGroupDeletion() {
-        click(By.name("delete"));
-    }
-
-    public void initGroupModification() {
-        click(By.name("edit"));
-    }
-
-    public void submitGroupModification() {
-        click(By.name("update"));
-    }
-
-    public void fillGroupForm(GroupData groupData) {
+    public void fillForm(GroupData groupData) {
         type(By.name("group_name"), groupData.getName());
         type(By.name("group_header"), groupData.getHeader());
         type(By.name("group_footer"), groupData.getFooter());
     }
 
-
-    public void createGroup(GroupData group) {
-        initGroupCreation();
-        fillGroupForm(group);
-        submitGroupCreation();
-        returnToGroupPage();
-    }
-
-    public boolean isThereGroup() {
-        return isElementPresent(By.name("selected[]"));
-    }
-
-    public int getGroupCount() {
-        return driver.findElements(By.name("selected[]")).size();
-    }
-
-    public List<GroupData> getGroupList() {
+    public List<GroupData> list() {
         List<GroupData> groups = new ArrayList<>();
         List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
-        for (WebElement element: elements){
+        for (WebElement element : elements) {
             String name = element.getText();
             String id = element.findElement(By.tagName("input")).getAttribute("value");
             GroupData group = new GroupData(Integer.parseInt(id), name, null, null);
             groups.add(group);
         }
         return groups;
+    }
+
+
+    public void initCreation() {
+        click(By.name("new"));
+    }
+
+    public void initModification() { click(By.name("edit")); }
+
+
+    public void modify(int index, GroupData group){
+        select(index);
+        initModification();
+        fillForm(group);
+        submitModification();
+        returnToGroupPage();
+    }
+
+
+    public void returnToGroupPage() {
+        click(By.linkText("group page"));
+    }
+
+    public void select(int index) {
+        driver.findElements(By.name("selected[]")).get(index).click();
+    }
+
+    public void submitCreation() {
+        click(By.name("submit"));
+    }
+
+    public void submitDeletion() {
+        click(By.name("delete"));
+    }
+
+
+    public void submitModification() {
+        click(By.name("update"));
     }
 }

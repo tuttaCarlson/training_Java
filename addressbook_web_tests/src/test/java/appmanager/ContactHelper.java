@@ -20,25 +20,25 @@ public class ContactHelper extends HelperBase {
         click(By.name("submit"));
     }
 
-    public void selectContact(int index){
+    public void selectToDelete(int index){
         driver.findElements(By.name("selected[]")).get(index).click();
     }
 
-    public void submitContactDeletion(){
+    public void submitDeletion(){
         click(By.xpath("//input[@value='Delete']"));
         submitAlert();
     }
 
-    public void submitContactModification(){
+    public void submitModification(){
         click(By.name("update"));
     }
 
-    public void initContactModification(int id){
-        String url = "http://localhost/addressbook/edit.php?id=" + id;
-        driver.get(url);
+    public void delete(int index) {
+        selectToDelete(index);
+        submitDeletion();
     }
 
-    public void fillContactForm(ContactData contactData, boolean creation) {
+    public void fillForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("address"), contactData.getAddress());
@@ -52,21 +52,22 @@ public class ContactHelper extends HelperBase {
         }
     }
 
-    public void initContactCreation() {
+    public void initCreation() {
         click(By.linkText("add new"));
     }
 
-    public void createContact(ContactData contact) {
-        initContactCreation();
-        fillContactForm(contact, true);
+    public void create(ContactData contact) {
+        initCreation();
+        fillForm(contact, true);
         submitContactCreation();
+        toHome();
     }
 
     public boolean isThereContact() {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<>();
         List<WebElement> elements = driver.findElements(By.name("entry"));
         for (WebElement element: elements){
@@ -81,9 +82,20 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
-    public void selectContactToModify(int index) {
+    public void selectToEdit(int index) {
         String url = "edit.php?id=" + index;
         driver.findElement(By.xpath("//a[@href='"+url+"']")).click();
+    }
+
+    public void toHome(){
+        driver.findElement(By.linkText("home page")).click();
+    }
+
+    public void modify(ContactData contact, int id) {
+        selectToEdit(id);
+        fillForm(contact, false);
+        submitModification();
+        toHome();
     }
 }
 
