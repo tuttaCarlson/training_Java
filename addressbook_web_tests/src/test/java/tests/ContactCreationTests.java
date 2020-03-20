@@ -13,9 +13,11 @@ public class ContactCreationTests extends TestBase {
     @Test
     public void testContactCreation(){
         app.goTo().groupPage();
-        GroupData group = new GroupData("test","header", "footer");
-        ContactData contact = new ContactData("Rabbit", "Nice", "SPB Russia",
-                "rabbit.nice.works@msailk.nu", "+79220002323", "test");
+        GroupData group = new GroupData().withName("test")
+                .withHeader("header").withFooter("footer");
+        ContactData contact = new ContactData().withFirstName("Rabbit").withLastName("Nice")
+                .withAddress("SPB Russia"). withEmail("rabbit.nice.works@msailk.nu")
+                .withPhoneMobile("+79220002323").withGroup("test");
         app.group().create(group);
         app.goTo().homePage();
         List<ContactData> before = app.contact().list();

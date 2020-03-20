@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 public class ContactData {
-    private int id;
+    private int id=Integer.MAX_VALUE;
     private String firstName;
     private String lastName;
     private String address;
@@ -11,16 +11,6 @@ public class ContactData {
     private String phoneMobile;
     private String group;
 
-    public ContactData(int id, String firstName, String lastName, String address,
-                            String email, String phoneMobile, String group){
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.email = email;
-        this.phoneMobile = phoneMobile;
-        this.group = group;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -36,16 +26,6 @@ public class ContactData {
         return Objects.hash(firstName, lastName);
     }
 
-    public ContactData(String firstName, String lastName, String address,
-                       String email, String phoneMobile, String group){
-        this.id = Integer.MAX_VALUE;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.email = email;
-        this.phoneMobile = phoneMobile;
-        this.group = group;
-    }
     public String getFirstName() {
         return firstName;
     }
@@ -68,6 +48,36 @@ public class ContactData {
 
     public String getGroup() { return group; }
 
+    public ContactData withFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public ContactData withLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withPhoneMobile(String phoneMobile) {
+        this.phoneMobile = phoneMobile;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -79,7 +89,8 @@ public class ContactData {
 
     public int getId() {return id; }
 
-    public void setId(int id) {
+    public ContactData withId(int id) {
         this.id = id;
+        return this;
     }
 }

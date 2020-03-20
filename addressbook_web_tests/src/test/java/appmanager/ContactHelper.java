@@ -75,8 +75,9 @@ public class ContactHelper extends HelperBase {
             String id = colValues.get(0).findElement(By.tagName("input")).getAttribute("id");
             String lastName = colValues.get(1).getText();
             String firstName = colValues.get(2).getText();
-            ContactData contact = new ContactData(Integer.parseInt(id), firstName
-                    , lastName, null, null, null, null);
+            ContactData contact = new ContactData().
+                    withId(Integer.parseInt(id)). withFirstName(firstName)
+                    .withLastName(lastName);
             contacts.add(contact);
         }
         return contacts;
