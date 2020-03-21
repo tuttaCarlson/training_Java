@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -11,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     WebDriver driver;
+    WebDriverWait wait;
     private String browser;
     private GroupHelper groupHelper;
     private NavigationHelper navigationHelper;
@@ -27,11 +29,11 @@ public class ApplicationManager {
         } else if (browser.equals(BrowserType.CHROME)) {
             driver = new ChromeDriver();
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        groupHelper = new GroupHelper(driver);
-        navigationHelper = new NavigationHelper(driver);
-        sessionHelper = new SessionHelper(driver);
-        contactHelper = new ContactHelper(driver);
+        wait = new WebDriverWait(driver, 10);
+        groupHelper = new GroupHelper(driver, wait);
+        navigationHelper = new NavigationHelper(driver, wait);
+        sessionHelper = new SessionHelper(driver, wait);
+        contactHelper = new ContactHelper(driver, wait);
         driver.get("http://localhost/addressbook/");
         sessionHelper.login("admin", "secret");
     }

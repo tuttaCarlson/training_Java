@@ -1,14 +1,13 @@
 package tests;
 
 import model.ContactData;
+import model.Contacts;
 import model.GroupData;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class ContactModificationTests extends TestBase {
 
@@ -29,18 +28,19 @@ public class ContactModificationTests extends TestBase {
     
     @Test
     public void testContactModification(){
-        Set<ContactData> before = app.contact().all();
+        Contacts before = app.contact().all();
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData().withId(modifiedContact.getId())
                 .withFirstName("Heilko").withLastName("Kopeilko")
                 .withAddress("29437 Espame").withEmail("fjfjf@mail.ce")
                 .withPhoneMobile("123456");
         app.contact().modify(contact);
-        Set<ContactData> after = app.contact().all();
+        Contacts after = app.contact().all();
         before.remove(modifiedContact);
         before.add(contact);
-        Assert.assertEquals(before.size(), after.size());
-        Assert.assertEquals(before, after);
+        assertEquals(before.size(), after.size());
+        assertThat(after, equalTo(before
+                .without(modifiedContact).withAdded(contact)));
     }
 
 

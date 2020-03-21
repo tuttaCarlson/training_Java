@@ -1,10 +1,12 @@
 package appmanager;
 
 import model.ContactData;
+import model.Contacts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.ArrayList;
@@ -14,8 +16,8 @@ import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
-    public ContactHelper(WebDriver driver){
-        super(driver);
+    public ContactHelper(WebDriver driver, WebDriverWait wait){
+        super(driver, wait);
     }
 
     public void submitContactCreation() {
@@ -29,6 +31,7 @@ public class ContactHelper extends HelperBase {
     public void submitDeletion(){
         click(By.xpath("//input[@value='Delete']"));
         submitAlert();
+
     }
 
     public void submitModification(){
@@ -94,8 +97,8 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
-    public Set<ContactData> all() {
-        Set<ContactData> contacts = new HashSet<>();
+    public Contacts all() {
+        Contacts contacts = new Contacts();
         List<WebElement> elements = driver.findElements(By.name("entry"));
         for (WebElement element: elements){
             List<WebElement> colValues = element.findElements(By.tagName("td"));

@@ -5,12 +5,14 @@ import model.Groups;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
-    public GroupHelper(WebDriver driver) {
-        super(driver);
+    public GroupHelper(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public Groups all() {

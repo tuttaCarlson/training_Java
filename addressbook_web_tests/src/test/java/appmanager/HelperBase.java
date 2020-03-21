@@ -3,12 +3,16 @@ package appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HelperBase {
     WebDriver driver;
+    WebDriverWait wait;
 
-    public HelperBase(WebDriver driver){
+    public HelperBase(WebDriver driver, WebDriverWait wait){
         this.driver = driver;
+        this.wait = wait;
     }
 
     public void type(By locator, String text) {
@@ -28,6 +32,8 @@ public class HelperBase {
 
     public void submitAlert(){
         driver.switchTo().alert().accept();
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("div[id='nav']")));
     }
 
     protected boolean isElementPresent(By locator) {
