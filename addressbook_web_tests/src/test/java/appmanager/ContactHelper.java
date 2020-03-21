@@ -8,7 +8,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -36,6 +38,15 @@ public class ContactHelper extends HelperBase {
     public void delete(int index) {
         selectToDelete(index);
         submitDeletion();
+    }
+
+    public void delete(ContactData contact) {
+        selectById(contact.getId());
+        submitDeletion();
+    }
+
+    private void selectById(int id) {
+        driver.findElement(By.cssSelector("input[id='"+id+"']")).click();
     }
 
     public void fillForm(ContactData contactData, boolean creation) {
@@ -83,8 +94,24 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
-    public void selectToEdit(int index) {
-        String url = "edit.php?id=" + index;
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<>();
+        List<WebElement> elements = driver.findElements(By.name("entry"));
+        for (WebElement element: elements){
+            List<WebElement> colValues = element.findElements(By.tagName("td"));
+            String id = colValues.get(0).findElement(By.tagName("input")).getAttribute("id");
+            String lastName = colValues.get(1).getText();
+            String firstName = colValues.get(2).getText();
+            ContactData contact = new ContactData().
+                    withId(Integer.parseInt(id)). withFirstName(firstName)
+                    .withLastName(lastName);
+            contacts.add(contact);
+        }
+        return contacts;
+    }
+
+    public void selectToEdit(int id) {
+        String url = "edit.php?id=" + id;
         driver.findElement(By.xpath("//a[@href='"+url+"']")).click();
     }
 
@@ -92,11 +119,13 @@ public class ContactHelper extends HelperBase {
         driver.findElement(By.linkText("home page")).click();
     }
 
-    public void modify(ContactData contact, int id) {
-        selectToEdit(id);
+    public void modify(ContactData contact) {
+        selectToEdit(contact.getId());
         fillForm(contact, false);
         submitModification();
         toHome();
     }
+
+
 }
 
