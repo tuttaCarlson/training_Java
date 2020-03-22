@@ -33,6 +33,10 @@ public class GroupHelper extends HelperBase {
         return new Groups(groupCache);
     }
 
+    public int count(){
+        return driver.findElements(By.name("selected[]")).size();
+    }
+
     public void create(GroupData group) {
         initCreation();
         fillForm(group);
@@ -46,10 +50,6 @@ public class GroupHelper extends HelperBase {
         submitDeletion();
         groupCache = null;
         returnToGroupPage();
-    }
-
-    private void selectById(int id) {
-        driver.findElement(By.cssSelector("input[value='"+id+"']")).click();
     }
 
     public void fillForm(GroupData groupData) {
@@ -76,13 +76,8 @@ public class GroupHelper extends HelperBase {
         returnToGroupPage();
     }
 
-
-    public void returnToGroupPage() {
-        click(By.linkText("group page"));
-    }
-
-    public void select(int index) {
-        driver.findElements(By.name("selected[]")).get(index).click();
+    private void selectById(int id) {
+        driver.findElement(By.cssSelector("input[value='"+id+"']")).click();
     }
 
     public void submitCreation() {
@@ -93,10 +88,11 @@ public class GroupHelper extends HelperBase {
         click(By.name("delete"));
     }
 
-
     public void submitModification() {
         click(By.name("update"));
     }
 
-
+    public void returnToGroupPage() {
+        click(By.linkText("group page"));
+    }
 }
