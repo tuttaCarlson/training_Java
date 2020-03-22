@@ -11,32 +11,40 @@ import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
-    public GroupHelper(WebDriver driver, WebDriverWait wait) {
+    private Groups groupCache = null;
+
+    public GroupHelper(WebDriver driver, WebDriverWait wait)
+    {
         super(driver, wait);
     }
 
     public Groups all() {
-        Groups groups = new Groups();
+        if (groupCache != null){
+            return  new Groups(groupCache);
+        }
+        groupCache = new Groups();
         List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
             String name = element.getText();
             String id = element.findElement(By.tagName("input")).getAttribute("value");
             GroupData group = new GroupData().withId(Integer.parseInt(id)).withName(name);
-            groups.add(group);
+            groupCache.add(group);
         }
-        return groups;
+        return new Groups(groupCache);
     }
 
     public void create(GroupData group) {
         initCreation();
         fillForm(group);
         submitCreation();
+        groupCache = null;
         returnToGroupPage();
     }
 
     public void delete(GroupData group) {
         selectById(group.getId());
         submitDeletion();
+        groupCache = null;
         returnToGroupPage();
     }
 
@@ -54,7 +62,9 @@ public class GroupHelper extends HelperBase {
         click(By.name("new"));
     }
 
-    public void initModification() { click(By.name("edit")); }
+    public void initModification() {
+        click(By.name("edit"));
+    }
 
 
     public void modify(GroupData group){
@@ -62,6 +72,7 @@ public class GroupHelper extends HelperBase {
         initModification();
         fillForm(group);
         submitModification();
+        groupCache = null;
         returnToGroupPage();
     }
 

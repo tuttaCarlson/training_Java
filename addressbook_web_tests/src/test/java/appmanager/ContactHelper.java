@@ -10,11 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
+    private Contacts contactCache = null;
 
     public ContactHelper(WebDriver driver, WebDriverWait wait){
         super(driver, wait);
@@ -46,6 +45,7 @@ public class ContactHelper extends HelperBase {
     public void delete(ContactData contact) {
         selectById(contact.getId());
         submitDeletion();
+        contactCache = null;
     }
 
     private void selectById(int id) {
@@ -59,8 +59,8 @@ public class ContactHelper extends HelperBase {
         type(By.name("mobile"), contactData.getPhoneMobile());
         type(By.name("email"), contactData.getEmail());
         if (creation){
-            new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData
-                    .getGroup());
+            new Select(driver.findElement(By.name("new_group")))
+                    .selectByVisibleText(contactData.getGroup());
         } else{
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -75,6 +75,7 @@ public class ContactHelper extends HelperBase {
         fillForm(contact, true);
         submitContactCreation();
         toHome();
+        contactCache = null;
     }
 
     public boolean isThereContact() {
@@ -98,7 +99,10 @@ public class ContactHelper extends HelperBase {
     }
 
     public Contacts all() {
-        Contacts contacts = new Contacts();
+        if (contactCache != null){
+            return new Contacts(contactCache);
+        }
+        contactCache = new Contacts();
         List<WebElement> elements = driver.findElements(By.name("entry"));
         for (WebElement element: elements){
             List<WebElement> colValues = element.findElements(By.tagName("td"));
@@ -108,9 +112,9 @@ public class ContactHelper extends HelperBase {
             ContactData contact = new ContactData().
                     withId(Integer.parseInt(id)). withFirstName(firstName)
                     .withLastName(lastName);
-            contacts.add(contact);
+            contactCache.add(contact);
         }
-        return contacts;
+        return new Contacts(contactCache);
     }
 
     public void selectToEdit(int id) {
@@ -126,6 +130,7 @@ public class ContactHelper extends HelperBase {
         selectToEdit(contact.getId());
         fillForm(contact, false);
         submitModification();
+        contactCache = null;
         toHome();
     }
 
