@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
@@ -15,8 +16,8 @@ public class ContactData {
     private String phoneHome;
     private String phoneWork;
     private String allPhones;
+    private File photo;
     private String group;
-
 
     public String getFirstName() {
         return firstName;
@@ -55,6 +56,8 @@ public class ContactData {
     public String getPhoneWork() { return phoneWork; }
 
     public String getAllPhones() {return allPhones;}
+
+    public File getPhoto() { return photo; }
 
     public String getGroup() { return group; }
 
@@ -110,6 +113,11 @@ public class ContactData {
 
     public ContactData withAllPhones(String allPhones){
         this.allPhones = allPhones;
+        return this;
+    }
+
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
         return this;
     }
 

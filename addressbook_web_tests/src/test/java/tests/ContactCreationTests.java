@@ -5,6 +5,8 @@ import model.Contacts;
 import model.GroupData;
 import org.testng.annotations.Test;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
@@ -14,11 +16,12 @@ public class ContactCreationTests extends TestBase {
     @Test
     public void testContactCreation(){
         app.goTo().groupPage();
+        File photo = new File("src/test/resources/sunflower.jpg");
         GroupData group = new GroupData().withName("test")
                 .withHeader("header").withFooter("footer");
         ContactData contact = new ContactData().withFirstName("Rabbit").withLastName("Nice")
                 .withAddress("SPB Russia"). withEmail("rabbit.nice.works@msailk.nu")
-                .withPhoneMobile("+79220002323").withGroup("test");
+                .withPhoneMobile("+79220002323").withGroup("test").withPhoto(photo);
         app.group().create(group);
         app.goTo().homePage();
         Contacts before = app.contact().all();
@@ -28,8 +31,5 @@ public class ContactCreationTests extends TestBase {
         assertThat(after, equalTo(before.withAdded(contact.withId(after.stream()
                 .mapToInt((c)->c.getId()).max().getAsInt()))));
     }
-
-
-
 
 }

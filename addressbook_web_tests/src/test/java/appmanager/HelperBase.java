@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+
 public class HelperBase {
     WebDriver driver;
     WebDriverWait wait;
@@ -23,6 +25,12 @@ public class HelperBase {
                 driver.findElement(locator).clear();
                 driver.findElement(locator).sendKeys(text);
             }
+        }
+    }
+
+    public void attach(By locator, File file) {
+        if (file != null){
+            driver.findElement(locator).sendKeys(file.getAbsolutePath());
         }
     }
 
