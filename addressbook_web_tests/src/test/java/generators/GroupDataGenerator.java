@@ -16,7 +16,7 @@ import java.util.List;
 
 public class GroupDataGenerator {
     @Parameter (names = "-c", description = "element count")
-    public int count;
+    private int count;
 
     @Parameter (names = "-f", description = "target file")
     public String file;

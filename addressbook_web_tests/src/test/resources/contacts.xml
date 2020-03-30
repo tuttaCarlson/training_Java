@@ -1,0 +1,182 @@
+<list>
+  <contact>
+    <firstName>name 0</firstName>
+    <lastName>last 0</lastName>
+    <address>address 0</address>
+    <email>email 0</email>
+    <phoneMobile>phone 0</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 1</firstName>
+    <lastName>last 1</lastName>
+    <address>address 1</address>
+    <email>email 1</email>
+    <phoneMobile>phone 1</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 2</firstName>
+    <lastName>last 2</lastName>
+    <address>address 2</address>
+    <email>email 2</email>
+    <phoneMobile>phone 2</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 3</firstName>
+    <lastName>last 3</lastName>
+    <address>address 3</address>
+    <email>email 3</email>
+    <phoneMobile>phone 3</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 4</firstName>
+    <lastName>last 4</lastName>
+    <address>address 4</address>
+    <email>email 4</email>
+    <phoneMobile>phone 4</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 5</firstName>
+    <lastName>last 5</lastName>
+    <address>address 5</address>
+    <email>email 5</email>
+    <phoneMobile>phone 5</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 6</firstName>
+    <lastName>last 6</lastName>
+    <address>address 6</address>
+    <email>email 6</email>
+    <phoneMobile>phone 6</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 7</firstName>
+    <lastName>last 7</lastName>
+    <address>address 7</address>
+    <email>email 7</email>
+    <phoneMobile>phone 7</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 8</firstName>
+    <lastName>last 8</lastName>
+    <address>address 8</address>
+    <email>email 8</email>
+    <phoneMobile>phone 8</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 9</firstName>
+    <lastName>last 9</lastName>
+    <address>address 9</address>
+    <email>email 9</email>
+    <phoneMobile>phone 9</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 10</firstName>
+    <lastName>last 10</lastName>
+    <address>address 10</address>
+    <email>email 10</email>
+    <phoneMobile>phone 10</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 11</firstName>
+    <lastName>last 11</lastName>
+    <address>address 11</address>
+    <email>email 11</email>
+    <phoneMobile>phone 11</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 12</firstName>
+    <lastName>last 12</lastName>
+    <address>address 12</address>
+    <email>email 12</email>
+    <phoneMobile>phone 12</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 13</firstName>
+    <lastName>last 13</lastName>
+    <address>address 13</address>
+    <email>email 13</email>
+    <phoneMobile>phone 13</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 14</firstName>
+    <lastName>last 14</lastName>
+    <address>address 14</address>
+    <email>email 14</email>
+    <phoneMobile>phone 14</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 15</firstName>
+    <lastName>last 15</lastName>
+    <address>address 15</address>
+    <email>email 15</email>
+    <phoneMobile>phone 15</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 16</firstName>
+    <lastName>last 16</lastName>
+    <address>address 16</address>
+    <email>email 16</email>
+    <phoneMobile>phone 16</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 17</firstName>
+    <lastName>last 17</lastName>
+    <address>address 17</address>
+    <email>email 17</email>
+    <phoneMobile>phone 17</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 18</firstName>
+    <lastName>last 18</lastName>
+    <address>address 18</address>
+    <email>email 18</email>
+    <phoneMobile>phone 18</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+  <contact>
+    <firstName>name 19</firstName>
+    <lastName>last 19</lastName>
+    <address>address 19</address>
+    <email>email 19</email>
+    <phoneMobile>phone 19</phoneMobile>
+    <photo>src\test\resources\sunflower.jpg</photo>
+    <group>test</group>
+  </contact>
+</list>
