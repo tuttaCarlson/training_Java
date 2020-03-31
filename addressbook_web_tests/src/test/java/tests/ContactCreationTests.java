@@ -31,13 +31,14 @@ public class ContactCreationTests extends TestBase {
 
     @DataProvider
     public Iterator<Object []> validContacts() throws IOException {
-        BufferedReader reader = new BufferedReader
-                (new FileReader(new File("src/test/resources/contacts.xml")));
         String xml = "";
-        String line = reader.readLine();
-        while(line!=null){
-        xml+=line;
-        line = reader.readLine();
+        try(BufferedReader reader = new BufferedReader
+                (new FileReader(new File("src/test/resources/contacts.xml")))) {
+            String line = reader.readLine();
+            while (line != null) {
+                xml += line;
+                line = reader.readLine();
+            }
         }
         XStream xStream = new XStream();
         xStream.processAnnotations(ContactData.class);
